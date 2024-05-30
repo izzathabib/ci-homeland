@@ -18,6 +18,6 @@ class PropertiesController extends BaseController
     public function getByPropPrice($order) 
     {
         $properties = $this->db->query("SELECT * FROM properties ORDER BY price ".$order)->getResult();
-        return view('props/props-by-price-asc', compact('properties'));
+        return view('props/props-by-price', compact('properties'));
     }
 }
