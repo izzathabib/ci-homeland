@@ -80,8 +80,8 @@
         <div class="ml-auto d-flex align-items-center">
           <div>
             <a href="<?= url_to('home'); ?>" class="view-list px-3 border-right active">All</a>
-            <a href="<?= url_to('get.prop.type', "rent") ?>" class="view-list px-3 border-right">Rent</a>
-            <a href="<?= url_to('get.prop.type', "buy") ?>" class="view-list px-3">Buy</a>
+            <a href="<?= url_to('propType', "rent") ?>" class="view-list px-3 border-right">Rent</a>
+            <a href="<?= url_to('propType', "buy") ?>" class="view-list px-3">Buy</a>
           </div>
 
 
