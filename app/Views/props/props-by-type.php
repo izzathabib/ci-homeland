@@ -24,7 +24,7 @@
 <!-- Sorting and search part -->
 
 
-<!-- Part that display the detail property -->
+<!-- Part that display listing of the detail property -->
 <div class="site-section site-section-sm bg-light"> 
 <div class="container">
   <div class="row mb-5">
@@ -35,7 +35,7 @@
           <div class="offer-type-wrap">
             <span class="offer-type bg-success"><?= $prop->type; ?></span>
           </div>
-          <img src="<?= base_url('public/assets/images/'.$prop->image.'') ?>" alt="Image" class="img-fluid">
+          <img src="images/<?= $prop->image; ?>" alt="Image" class="img-fluid">
         </a>
         <div class="p-4 property-body">
           <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
