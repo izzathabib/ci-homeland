@@ -8,5 +8,5 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index', ['as' => 'home']);
 service('auth')->routes($routes);
-$routes->get('propertylist/category/(:any)', 'PropertiesController::getByPropType/1', ['as' => 'propList']);
+$routes->get('props/prop-type/(:any)', 'Properties\PropertiesController::getByPropType/$1', ['as' => 'get.prop.type']);
 
