@@ -44,7 +44,7 @@
         <div class="container py-1">
           <div class="row align-items-center">
             <div class="col-8 col-md-8 col-lg-4">
-              <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Homeland<span class="text-danger">.</span></strong></a></h1>
+              <h1 class="mb-0"><a href="<?= url_to('home'); ?>" class="text-white h2 mb-0"><strong>Homeland<span class="text-danger">.</span></strong></a></h1>
             </div>
             <div class="col-4 col-md-4 col-lg-8">
               <nav class="site-navigation text-right text-md-right" role="navigation">
@@ -53,7 +53,7 @@
 
                 <ul class="site-menu js-clone-nav d-none d-lg-block">
                   <li class="active">
-                    <a href="index.html">Home</a>
+                    <a href="<?= url_to('home'); ?>">Home</a>
                   </li>
                   <li><a href="<?= url_to('propType', "buy"); ?>">Buy</a></li>
                   <li><a href="<?= url_to('propType', "rent"); ?>">Rent</a></li>

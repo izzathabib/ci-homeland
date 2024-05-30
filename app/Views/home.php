@@ -21,7 +21,7 @@
 <?php endforeach; ?>  
 </div>  
 
-<!-- Sorting and search part -->
+<!-- Searching part -->
 <div class="site-section site-section-sm pb-0">
 <div class="container">
   <div class="row">
@@ -87,6 +87,7 @@
 
           <div class="select-wrap">
             <span class="icon icon-arrow_drop_down"></span>
+            <!-- Sorting part -->
             <select class="form-control form-control-sm d-block rounded-0">
               <option value="">Sort by</option>
               <option value="">Price Ascending</option>
