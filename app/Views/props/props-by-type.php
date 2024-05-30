@@ -5,14 +5,14 @@
 <!-- Slider part -->
 <div class="slide-one-item home-slider owl-carousel">
 <!-- Loop to display the data on the slider section -->
-<?php foreach ($propData as $prop) : ?>
-<div class="site-blocks-cover overlay" style="background-image: url(images/<?= $prop['image']; ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
+<?php foreach ($properties as $prop) : ?>
+<div class="site-blocks-cover overlay" style="background-image: url(images/<?= $prop->image; ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
   <div class="container">
     <div class="row align-items-center justify-content-center text-center">
       <div class="col-md-10">
-        <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For <?= $prop['type'] ?></span>
-        <h1 class="mb-2"><?= $prop['name']; ?></h1>
-        <p class="mb-5"><strong class="h2 text-success font-weight-bold">RM <?= $prop['price']; ?></strong></p>
+        <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For <?= $prop->type; ?></span>
+        <h1 class="mb-2"><?= $prop->name; ?></h1>
+        <p class="mb-5"><strong class="h2 text-success font-weight-bold">RM <?= $prop->price; ?></strong></p>
         <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
       </div>
     </div>
@@ -80,7 +80,7 @@
         <div class="ml-auto d-flex align-items-center">
           <div>
             <a href="<?= url_to('home'); ?>" class="view-list px-3 border-right active">All</a>
-            <a href="#" class="view-list px-3 border-right">Rent</a>
+            <a href="<?= url_to('rent'); ?>" class="view-list px-3 border-right">Rent</a>
             <a href="#" class="view-list px-3">Buy</a>
           </div>
 
@@ -105,34 +105,34 @@
 <div class="site-section site-section-sm bg-light"> 
 <div class="container">
   <div class="row mb-5">
-    <?php foreach ($propData as $prop) : ?>
+    <?php foreach ($properties as $props) : ?>
     <div class="col-md-6 col-lg-4 mb-4">
       <div class="property-entry h-100">
         <a href="property-details.html" class="property-thumbnail">
           <div class="offer-type-wrap">
-            <span class="offer-type bg-success"><?= $prop['type']; ?></span>
+            <span class="offer-type bg-success"><?= $props->type; ?></span>
           </div>
-          <img src="images/<?= $prop['image']; ?>" alt="Image" class="img-fluid">
+          <img src="<?= base_url('public/assets/images/'.$props->image.'') ?>" alt="Image" class="img-fluid">
         </a>
         <div class="p-4 property-body">
           <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-          <h2 class="property-title"><a href="property-details.html"><?= $prop['name']; ?></a></h2>
-          <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?= $prop['location']; ?></span>
-          <strong class="property-price text-primary mb-3 d-block text-success">RM <?= $prop['price']; ?></strong>
+          <h2 class="property-title"><a href="property-details.html"><?= $props->name; ?></a></h2>
+          <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?= $props->location; ?></span>
+          <strong class="property-price text-primary mb-3 d-block text-success">RM <?= $props->price; ?></strong>
           <ul class="property-specs-wrap mb-3 mb-lg-0">
             <li>
               <span class="property-specs">Beds</span>
-              <span class="property-specs-number"><?= $prop['num_beds']; ?></span>
+              <span class="property-specs-number"><?= $props->num_beds; ?></span>
               
             </li>
             <li>
               <span class="property-specs">Baths</span>
-              <span class="property-specs-number"><?= $prop['num_baths']; ?></span>
+              <span class="property-specs-number"><?= $props->num_baths; ?></span>
               
             </li>
             <li>
               <span class="property-specs">SQ FT</span>
-              <span class="property-specs-number"><?= $prop['sq_ft']; ?></span>
+              <span class="property-specs-number"><?= $props->sq_ft; ?></span>
               
             </li>
           </ul>
