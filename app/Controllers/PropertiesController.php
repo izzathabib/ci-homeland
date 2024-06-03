@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Property\Property;
 
 class PropertiesController extends BaseController
 {
@@ -19,5 +20,12 @@ class PropertiesController extends BaseController
     {
         $properties = $this->db->query("SELECT * FROM properties ORDER BY price ".$order)->getResult();
         return view('props/props-by-price', compact('properties'));
+    }
+
+    public function propDetail($id)
+    {
+        $model = new Property();
+        $propsDetail = $model->find($id);
+        return view('props/props-detail', compact('propsDetail'));
     }
 }

@@ -11,3 +11,7 @@ service('auth')->routes($routes);
 $routes->get('property-type/(:any)', 'PropertiesController::getByPropType/$1', ['as' => 'propType']);
 $routes->get('property-price-sort/(:any)', 'PropertiesController::getByPropPrice/$1', ['as' => 'propByPrice']);
 
+// Property detail
+$routes->get('property-detail/(:num)', 'PropertiesController::propDetail/$1', ['as' => 'propDetail']);
+
+

@@ -13,7 +13,7 @@
         <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For <?= $prop['type'] ?></span>
         <h1 class="mb-2"><?= $prop['name']; ?></h1>
         <p class="mb-5"><strong class="h2 text-success font-weight-bold">RM <?= $prop['price']; ?></strong></p>
-        <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
+        <p><a href="<?= url_to('propDetail', $prop['id']); ?>" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>
       </div>
     </div>
   </div>
@@ -75,7 +75,8 @@
         <div class="mr-auto">
           <!-- <a href="index.html" class="icon-view view-module active"><span class="icon-view_module"></span></a>
           <a href="view-list.html" class="icon-view view-list"><span class="icon-view_list"></span></a> -->
-          
+        
+        <!-- Category clickable part -->
         </div>
         <div class="ml-auto d-flex align-items-center">
           <div>
@@ -119,7 +120,7 @@
         </a>
         <div class="p-4 property-body">
           <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-          <h2 class="property-title"><a href="property-details.html"><?= $prop['name']; ?></a></h2>
+          <h2 class="property-title"><a href="<?= url_to('propDetail', $prop['id']); ?>"><?= $prop['name']; ?></a></h2>
           <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span><?= $prop['location']; ?></span>
           <strong class="property-price text-primary mb-3 d-block text-success">RM <?= $prop['price']; ?></strong>
           <ul class="property-specs-wrap mb-3 mb-lg-0">
