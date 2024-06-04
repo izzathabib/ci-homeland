@@ -24,11 +24,13 @@
         <div class="row">
           <div class="col-lg-8">
             <div>
+              <!-- Small slider -->
               <div class="slide-one-item home-slider owl-carousel">
-                <div><img src="images/hero_bg_1.jpg" alt="Image" class="img-fluid"></div>
-                <div><img src="images/hero_bg_2.jpg" alt="Image" class="img-fluid"></div>
-                <div><img src="images/hero_bg_3.jpg" alt="Image" class="img-fluid"></div>
+                <?php foreach ($image_gallery as $image) : ?>
+                <div><img src="images/<?= $image->image; ?>" alt="Image" class="img-fluid"></div>
+                <?php endforeach; ?>  
               </div>
+              <!-- End small slider -->
             </div>
             <div class="bg-white property-body border-bottom border-left border-right">
               <div class="row mb-5">
@@ -73,48 +75,20 @@
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda aperiam perferendis deleniti vitae asperiores accusamus tempora facilis sapiente, quas! Quos asperiores alias fugiat sunt tempora molestias quo deserunt similique sequi.</p>
               <p>Nisi voluptatum error ipsum repudiandae, autem deleniti, velit dolorem enim quaerat rerum incidunt sed, qui ducimus! Tempora architecto non, eligendi vitae dolorem laudantium dolore blanditiis assumenda in eos hic unde.</p>
               <p>Voluptatum debitis cupiditate vero tempora error fugit aspernatur sint veniam laboriosam eaque eum, et hic odio quibusdam molestias corporis dicta! Beatae id magni, laudantium nulla iure ea sunt aliquam. A.</p>
-
+              
+              <!-- Gallery part -->
               <div class="row no-gutters mt-5">
                 <div class="col-12">
                   <h2 class="h4 text-black mb-3">Gallery</h2>
                 </div>
+                <?php foreach ($image_gallery as $image) : ?>
                 <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_1.jpg" class="image-popup gal-item"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
+                  <a href="images/<?= $image->image; ?>" class="image-popup gal-item"><img src="images/<?= $image->image; ?>" alt="Image" class="img-fluid"></a>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_5.jpg" class="image-popup gal-item"><img src="images/img_5.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_6.jpg" class="image-popup gal-item"><img src="images/img_6.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_7.jpg" class="image-popup gal-item"><img src="images/img_7.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_8.jpg" class="image-popup gal-item"><img src="images/img_8.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_1.jpg" class="image-popup gal-item"><img src="images/img_1.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_2.jpg" class="image-popup gal-item"><img src="images/img_2.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_3.jpg" class="image-popup gal-item"><img src="images/img_3.jpg" alt="Image" class="img-fluid"></a>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                  <a href="images/img_4.jpg" class="image-popup gal-item"><img src="images/img_4.jpg" alt="Image" class="img-fluid"></a>
-                </div>
+                <?php endforeach; ?>
               </div>
+              <!-- End gallery part -->
+
             </div>
           </div>
           <div class="col-lg-4">

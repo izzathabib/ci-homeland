@@ -24,8 +24,13 @@ class PropertiesController extends BaseController
 
     public function propDetail($id)
     {
+        // Declare instances for model
         $model = new Property();
+
+        // Fetch data from database
         $propsDetail = $model->find($id);
-        return view('props/props-detail', compact('propsDetail'));
+        $image_gallery = $this->db->query("SELECT * FROM images WHERE prop_id = '$id'" )->getResult();
+
+        return view('props/props-detail', compact('propsDetail','image_gallery'));
     }
 }
