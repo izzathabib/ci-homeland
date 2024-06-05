@@ -30,7 +30,8 @@ class PropertiesController extends BaseController
         // Fetch data from database
         $propsDetail = $model->find($id);
         $image_gallery = $this->db->query("SELECT * FROM images WHERE prop_id = '$id'" )->getResult();
+        $related_property = $this->db->query("SELECT * FROM properties WHERE home_type = '$propsDetail[home_type]' AND id != '$propsDetail[id]'" )->getResult();
 
-        return view('props/props-detail', compact('propsDetail','image_gallery'));
+        return view('props/props-detail', compact('propsDetail','image_gallery','related_property'));
     }
 }
