@@ -96,18 +96,34 @@
             <div class="bg-white widget border rounded">
 
               <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
-              <form action="" class="form-contact-agent">
+              <form method="POST" action="<?= url_to('sendRequest',$propsDetail['id']); ?>" class="form-contact-agent">
                 <div class="form-group">
                   <label for="name">Name</label>
-                  <input type="text" id="name" class="form-control">
+                  <input name="name" type="text" id="name" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" id="email" class="form-control">
+                  <input name="email" type="email" id="email" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="phone">Phone</label>
-                  <input type="text" id="phone" class="form-control">
+                  <input name="phone" type="text" id="phone" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="prop_name">Property Name</label>
+                  <input value="<?= $propsDetail['name']; ?>" name="prop_name" type="text" id="prop_name" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="prop_image">Image</label>
+                  <input value="<?= $propsDetail['image']; ?>" name="prop_image" type="text" id="prop_image" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="prop_price">Price</label>
+                  <input value="<?= $propsDetail['price']; ?>" name="prop_price" type="text" id="prop_price" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="prop_location">Location</label>
+                  <input value="<?= $propsDetail['location']; ?>" name="prop_location" type="text" id="prop_location" class="form-control">
                 </div>
                 <div class="form-group">
                   <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
