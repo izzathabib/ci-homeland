@@ -2,7 +2,7 @@
 <?= $this->extend('layouts/app.php'); ?>
 <?= $this->section('content'); ?>
 
-<!-- Slider part -->
+<!-- main slider part -->
 <div class="slide-one-item home-slider owl-carousel">
 <!-- Loop to display the data on the slider section -->
   <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(images/<?= $propsDetail['image']; ?>);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -17,10 +17,17 @@
       </div>
     </div>
 </div>
-<!-- End slider part -->
+<!-- End main slider part -->
+
+
 
 <div class="site-section site-section-sm">
       <div class="container">
+        <!-- Get flash data to display if form successfully submitted -->
+        <?php if(session()->getFlashdata('sent')) : ?>
+          <p class="alert alert-success"><?= session()->getFlashdata('sent'); ?></p>
+        <?php endif; ?>
+        <!---->
         <div class="row">
           <div class="col-lg-8">
             <div>
@@ -92,45 +99,48 @@
             </div>
           </div>
           <div class="col-lg-4">
-
+            
+            <!-- Contact form -->
             <div class="bg-white widget border rounded">
 
               <h3 class="h4 text-black widget-title mb-3">Contact Agent</h3>
-              <form method="POST" action="<?= url_to('sendRequest',$propsDetail['id']); ?>" class="form-contact-agent">
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input name="name" type="text" id="name" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input name="email" type="email" id="email" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="phone">Phone</label>
-                  <input name="phone" type="text" id="phone" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="prop_name">Property Name</label>
-                  <input value="<?= $propsDetail['name']; ?>" name="prop_name" type="text" id="prop_name" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="prop_image">Image</label>
-                  <input value="<?= $propsDetail['image']; ?>" name="prop_image" type="text" id="prop_image" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="prop_price">Price</label>
-                  <input value="<?= $propsDetail['price']; ?>" name="prop_price" type="text" id="prop_price" class="form-control">
-                </div>
-                <div class="form-group">
-                  <label for="prop_location">Location</label>
-                  <input value="<?= $propsDetail['location']; ?>" name="prop_location" type="text" id="prop_location" class="form-control">
-                </div>
-                <div class="form-group">
-                  <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
-                </div>
-              </form>
+              <!-- Check input validation -->
+              <?php if ($checkingSendingRequests > 0) : ?>
+                <p class="alert alert-success">You sent a request to this property</p>
+              <?php else : ?>    
+                <form method="POST" action="<?= url_to('sendRequest',$propsDetail['id']); ?>" class="form-contact-agent">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input name="name" type="text" id="name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input name="email" type="email" id="email" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input name="phone" type="text" id="phone" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['name']; ?>" name="prop_name" type="hidden" id="prop_name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['image']; ?>" name="prop_image" type="hidden" id="prop_image" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['price']; ?>" name="prop_price" type="hidden" id="prop_price" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['location']; ?>" name="prop_location" type="hidden" id="prop_location" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
+                  </div>
+                </form>
+              <?php endif; ?>
             </div>
-            
+            <!---->
+
             <!-- Share through social media -->
             <div class="bg-white widget border rounded">
               <h3 class="h4 text-black widget-title mb-3 ml-0">Share</h3>
@@ -143,7 +153,7 @@
             <!---->
 
           </div>
-          
+       
         </div>
       </div>
     </div>

@@ -33,7 +33,13 @@ class PropertiesController extends BaseController
         $image_gallery = $this->db->query("SELECT * FROM images WHERE prop_id = '$id'" )->getResult();
         $related_property = $this->db->query("SELECT * FROM properties WHERE home_type = '$propsDetail[home_type]' AND id != '$propsDetail[id]'" )->getResult();
 
-        return view('props/props-detail', compact('propsDetail','image_gallery','related_property'));
+        // Checking for sending request
+        $checkingSendingRequests = $this->db->table('requests')
+        ->where('user_id', auth()->user()->id)
+        ->where('prop_id',$id)
+        ->countAllResults();
+
+        return view('props/props-detail', compact('propsDetail','image_gallery','related_property','checkingSendingRequests'));
     }
 
     public function sendRequest($id)
@@ -56,6 +62,9 @@ class PropertiesController extends BaseController
 
         // Save $model data to database
         $model->save($data);
-        echo "Request Sent";
+        // Check if the data have been save
+        if ($model) {
+            return redirect()->to(base_url('property-detail/'.$id))->with('sent','Request sent successfully');
+        }
     }
 }
