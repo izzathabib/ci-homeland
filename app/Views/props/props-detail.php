@@ -28,6 +28,13 @@
           <p class="alert alert-success"><?= session()->getFlashdata('sent'); ?></p>
         <?php endif; ?>
         <!---->
+
+        <!-- Get flash data to display if property save successfully submitted -->
+        <?php if(session()->getFlashdata('save')) : ?>
+          <p class="alert alert-success"><?= session()->getFlashdata('save'); ?></p>
+        <?php endif; ?>
+        <!---->
+          
         <div class="row">
           <div class="col-lg-8">
             <div>
@@ -135,6 +142,36 @@
                   </div>
                   <div class="form-group">
                     <input type="submit" id="phone" class="btn btn-primary" value="Send Message">
+                  </div>
+                </form>
+              <?php endif; ?>
+            </div>
+            <!---->
+            
+            <!--Save Property-->
+            <div class="bg-white widget border rounded">
+
+              <h3 class="h4 text-black widget-title mb-3">Save Property</h3>
+              <!-- Check input validation -->
+              <?php if ($checkingSaveProperty > 0) : ?>
+               <p class="alert alert-success">You saved this property</p> 
+              <?php else : ?>    
+                <form method="POST" action="<?= url_to('saveProperty',$propsDetail['id']); ?>" class="form-contact-agent">
+                  
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['name']; ?>" name="prop_name" type="hidden" id="prop_name" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['image']; ?>" name="prop_image" type="hidden" id="prop_image" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['price']; ?>" name="prop_price" type="hidden" id="prop_price" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input value="<?= $propsDetail['location']; ?>" name="prop_location" type="hidden" id="prop_location" class="form-control">
+                  </div>
+                  <div class="form-group">
+                    <input type="submit" id="phone" class="btn btn-primary" value="Save Property">
                   </div>
                 </form>
               <?php endif; ?>

@@ -14,5 +14,7 @@ $routes->get('property-price-sort/(:any)', 'PropertiesController::getByPropPrice
 // Property detail
 $routes->get('property-detail/(:num)', 'PropertiesController::propDetail/$1', ['as' => 'propDetail']);
 $routes->post('property-request/(:num)', 'PropertiesController::sendRequest/$1', ['as' => 'sendRequest']);
+$routes->post('save-Property/(:num)', 'PropertiesController::saveProperty/$1', ['as' => 'saveProperty']);
+
 
 

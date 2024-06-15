@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\Property\Property;
 use App\Models\Request\Request;
+use App\Models\saveProperty\saveProperty;
+
 
 class PropertiesController extends BaseController
 {
@@ -39,7 +41,13 @@ class PropertiesController extends BaseController
         ->where('prop_id',$id)
         ->countAllResults();
 
-        return view('props/props-detail', compact('propsDetail','image_gallery','related_property','checkingSendingRequests'));
+        // Checking for saving property
+        $checkingSaveProperty = $this->db->table('saveproperties')
+        ->where('user_id', auth()->user()->id)
+        ->where('prop_id',$id)
+        ->countAllResults();
+
+        return view('props/props-detail', compact('propsDetail','image_gallery','related_property','checkingSendingRequests','checkingSaveProperty'));
     }
 
     public function sendRequest($id)
@@ -65,6 +73,29 @@ class PropertiesController extends BaseController
         // Check if the data have been save
         if ($model) {
             return redirect()->to(base_url('property-detail/'.$id))->with('sent','Request sent successfully');
+        }
+    }
+
+    public function saveProperty($id)
+    {
+        // Declare instances for model
+        $model = new saveProperty();
+
+        // Fetch data
+        $data = [
+            "user_id" => auth()->user()->id,
+            "prop_id" => $id,
+            "prop_image" => $this->request->getPost('prop_image'),
+            "prop_name" => $this->request->getPost('prop_name'),
+            "prop_price" => $this->request->getPost('prop_price'),
+            "prop_location" => $this->request->getPost('prop_location'),
+        ];
+
+        // Save $model data to database
+        $model->save($data);
+        // Check if the data have been save
+        if ($model) {
+            return redirect()->to(base_url('property-detail/'.$id))->with('save','Property saved successfully');
         }
     }
 }
