@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Property\Property;
 use App\Models\Request\Request;
 use App\Models\saveProperty\saveProperty;
+use App\Models\HomeType\HomeType;
 
 
 class PropertiesController extends BaseController
@@ -29,12 +30,15 @@ class PropertiesController extends BaseController
     {
         // Declare instances for model
         $model = new Property();
+        $homeTypes = new HomeType();
+
 
         // Fetch data from database
         $propsDetail = $model->find($id);
         $image_gallery = $this->db->query("SELECT * FROM images WHERE prop_id = '$id'" )->getResult();
         $related_property = $this->db->query("SELECT * FROM properties WHERE home_type = '$propsDetail[home_type]' AND id != '$propsDetail[id]'" )->getResult();
-
+        $allHomeTypes = $homeTypes->findAll();
+        
         // Checking for sending request
         $checkingSendingRequests = $this->db->table('requests')
         ->where('user_id', auth()->user()->id)
@@ -47,7 +51,7 @@ class PropertiesController extends BaseController
         ->where('prop_id',$id)
         ->countAllResults();
 
-        return view('props/props-detail', compact('propsDetail','image_gallery','related_property','checkingSendingRequests','checkingSaveProperty'));
+        return view('props/props-detail', compact('propsDetail','image_gallery','related_property','checkingSendingRequests','checkingSaveProperty','allHomeTypes'));
     }
 
     public function sendRequest($id)
@@ -98,4 +102,6 @@ class PropertiesController extends BaseController
             return redirect()->to(base_url('property-detail/'.$id))->with('save','Property saved successfully');
         }
     }
+
+
 }

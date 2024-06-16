@@ -189,6 +189,15 @@
             </div>
             <!---->
 
+            <div class="bg-white widget border rounded">
+              <h3 class="h4 text-black widget-title mb-3 ml-0">Properties Home Types</h3>
+                  <div class="px-3" style="margin-left: -15px;">
+                  <?php foreach($allHomeTypes as $homeType) : ?>
+                    <a href="#" class="pt-3 pb-3 pr-3 pl-0 d-block"><?= $homeType['name']; ?></a>
+                  <?php endforeach; ?>
+                  </div>            
+            </div>
+
           </div>
        
         </div>
