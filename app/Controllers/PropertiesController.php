@@ -103,5 +103,10 @@ class PropertiesController extends BaseController
         }
     }
 
+    public function propByHomeType($homeType)
+    {
+        $propByHomeType = $this->db->query("SELECT * FROM properties WHERE home_type='$homeType'")->getResult();
+        return view('props/props-by-homeType', compact('propByHomeType'));
+    }
 
 }

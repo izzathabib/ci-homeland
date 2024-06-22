@@ -16,5 +16,11 @@ $routes->get('property-detail/(:num)', 'PropertiesController::propDetail/$1', ['
 $routes->post('property-request/(:num)', 'PropertiesController::sendRequest/$1', ['as' => 'sendRequest']);
 $routes->post('save-Property/(:num)', 'PropertiesController::saveProperty/$1', ['as' => 'saveProperty']);
 
+$routes->get('property-detail/(:any)', 'PropertiesController::propByHomeType/$1', ['as' => 'propHomeType']);
+
+$routes->get('admin/login', 'Admins\AdminsController::login', ['as' => 'adminLogin']);
+
+
+
 
 
